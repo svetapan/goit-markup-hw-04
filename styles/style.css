@@ -130,13 +130,6 @@ header {
   fill: var(--accent-color);
 }
 
-/* .contact-link::before {
-  width: 16px;
-  height: 12px;
-  background-image: url();
-  margin-right: 10px;
-} */
-
 /* Hero */
 .hero {
   color: var(--secondary-color);
@@ -145,14 +138,12 @@ header {
   background: #000;
 
   max-width: 1600px;
-  height: 600px;
   margin-left: auto;
   margin-right: auto;
   background-image: linear-gradient(to top, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/work-people.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
 }
 
 .hero-title {
@@ -508,6 +499,7 @@ footer .social-icon {
 }
 
 .portfolio-card {
+  display: block;
   color: inherit;
   text-decoration: none;
   font-size: 16px;
@@ -525,18 +517,9 @@ footer .social-icon {
   margin-bottom: 4px;
 }
 
-.portfolio-card {
-  display: block;
-  border: 1px solid #eeeeee;
-}
-
 .portfolio-card:hover,
 .portfolio-card:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
-}
-
-.portfolio-card-img {
-  margin: -1px -1px 0;
 }
 
 .portfolio-card img {
@@ -549,6 +532,8 @@ footer .social-icon {
   margin: 0;
 }
 
-.content {
+.portfolio-content {
+  border: 1px solid #eeeeee;
+  border-top: 0;
   padding: 20px 24px;
 }
