@@ -5,6 +5,7 @@
   --secondary-color: #ffffff;
   --secondary-bg-color: #f5f4fa;
   --conteiner-bg-color: #F5F5F5;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -78,6 +79,7 @@ header {
 }
 
 .site-nav .link {
+  position: relative;
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -86,6 +88,7 @@ header {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: 250ms color var(--timing-function);
 
   text-decoration: none;
 }
@@ -94,6 +97,22 @@ header {
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--accent-color);
+}
+
+.site-nav .link::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transform: scaleX(0);
+}
+
+.site-nav .active:after{
+  transform: scaleX(1);
 }
 
 /* Contact */
@@ -107,8 +126,8 @@ header {
 }
 
 .contact-icon {
-  fill: var(--primary-text-color);
   margin-right: 10px;
+  fill: currentColor;
 }
 
 .contact-link {
@@ -119,15 +138,12 @@ header {
   font-weight: 500;
   line-height: 1.14;
   letter-spacing: 0.02em;
+  transition: 250ms color var(--timing-function);
 }
 
 .contact-link:hover,
 .contact-link:focus {
   color: var(--accent-color);
-}
-
-.contact-icon:hover {
-  fill: var(--accent-color);
 }
 
 /* Hero */
@@ -172,6 +188,7 @@ header {
   letter-spacing: 0.06em;
   cursor: pointer;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+  transition:  background-color 250ms var(--timing-function);
 }
 
 .hero-button:hover,
@@ -254,6 +271,10 @@ header {
 }
 
 /* Заняття */
+.img-thumb {
+  position: relative;
+}
+
 .img-list {
   display: flex;
   flex-wrap: wrap;
@@ -269,6 +290,26 @@ header {
 
 .img-list img {
   display: block;
+}
+
+.descr {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(47, 48, 58, 0.8);
+  text-align: center;
+}
+
+.img-title {
+  margin: 0;
+  padding: 27px;
+  font-weight: 700;
+line-height: 1.14;
+
+text-transform: uppercase;
+
+color: var(--secondary-color);
 }
 
 /* Команда */
@@ -335,7 +376,9 @@ header {
   line-height: 42px;
   border-radius: 50%;
   margin: 10px 5px 0;
+  transition: background-color 250ms var(--timing-function);
 }
+
 
 .social-icon:hover,
 .social-icon:focus {
@@ -349,6 +392,7 @@ header {
   flex-wrap: wrap;
   margin-top: -30px;
   margin-left: -30px;
+  
 }
 
 .client {
@@ -360,6 +404,7 @@ header {
   line-height: 90px;
   text-align: center;
   border-radius: 4px;
+  transition: border-color 250ms var(--timing-function), fill 250ms var(--timing-function);;
 }
 
  .client-icon {
@@ -429,6 +474,7 @@ footer .logo {
 .address-link {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
+  transition: color 250ms var(--timing-function);
 }
 
 .tel {
@@ -478,8 +524,10 @@ footer .social-icon {
   line-height: 1.63;
   text-align: center;
   cursor: pointer;
+  transition: 250ms color var(--timing-function), 250ms background-color var(--timing-function)  ,250ms box-shadow var(--timing-function);
 }
 
+.filter-button.active,
 .filter-button:hover,
 .filter-button:focus {
   background: var(--accent-color);
@@ -507,6 +555,27 @@ footer .social-icon {
   letter-spacing: 0.03em;
 }
 
+.portfolio-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-description {
+  background-color:rgba(33, 150, 243, 0.9);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 63px 24px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.56;
+  transform: translateY(101%);
+  transition: opacity 250ms var(--timing-function);
+  transition: transform 250ms var(--timing-function);
+}
+
 .portfolio-card-title {
   color: var(--title-text-color);
   font-weight: 700;
@@ -517,9 +586,17 @@ footer .social-icon {
   margin-bottom: 4px;
 }
 
+.portfolio-card:hover .portfolio-description,
+.portfolio-card:hover .portfolio-description {
+  opacity: 1;
+  
+  transform: translateY(0);
+}
+
 .portfolio-card:hover,
 .portfolio-card:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition: box-shadow 250ms var(--timing-function);
 }
 
 .portfolio-card img {
@@ -536,4 +613,62 @@ footer .social-icon {
   border: 1px solid #eeeeee;
   border-top: 0;
   padding: 20px 24px;
+}
+
+.backdrop {
+  position: fixed;
+  /* text-align: center; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  padding: 25px;
+  transition: opacity 250ms var(--timing-function);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  padding: 25px;
+  background: var(--secondary-color);
+  width: 528px;
+  height: 581px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 250ms var(--timing-function) 250ms;
+}
+
+.modal-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-block;
+  width: 30px; ;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.closed {
+  vertical-align: middle;
+  width: 11px;
+  height: 11px;
+  fill: #000000;
 }

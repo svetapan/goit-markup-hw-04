@@ -63,7 +63,7 @@
             Ефективні рішення для <br />
             вашого бізнесу
           </h1>
-          <button type="button" class="hero-button">Замовити послугу</button>
+          <button type="button" class="hero-button" data-modal-open>Замовити послугу</button>
         </div>
       </section>
       <!--Переваги-->
@@ -121,37 +121,48 @@
           </ul>
         </div>
       </section>
+
       <!--Заняття-->
       <section class="section section-top-0">
         <div class="container">
           <h2 class="section-title">Чим ми займаємося</h2>
           <ul class="img-list list">
-            <li>
+            <li class="img-thumb">
               <img
                 src="./images/komputer.jpg"
                 width="370"
                 height="294"
                 alt="робота за компютером"
               />
+              <div class="descr">
+                <h3 class="img-title">Десктопні додатки</h3>
+              </div>
             </li>
-            <li>
+            <li class="img-thumb">
               <img
                 src="./images/notebook.jpg"
                 width="370"
                 height="294"
                 alt="ноутбук"
               />
+              <div class="descr">
+                <h3 class="img-title">Мобільні додатки</h3>
+              </div>
             </li>
-            <li>
+            <li class="img-thumb">
               <img
                 src="./images/tablet.jpg"
                 width="370"
                 height="294"
                 alt="кольорова картинка на планшеті"
               />
+              <div class="descr">
+                <h3 class="img-title">Дизайнерські рішення</h3>
+              </div>
             </li>
           </ul>
         </div>
+
         <!--Команда-->
       </section>
       <section class="section section-secondary">
@@ -440,5 +451,18 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+          <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum aliquid et ut in, architecto error at mollitia pariatur ullam. Unde.
+          </p>
+          <button class="modal-button" data-modal-close>
+            <svg class="closed">
+              <use href="./images/sprite.svg#icon-close"></use>
+            </svg>
+          </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
